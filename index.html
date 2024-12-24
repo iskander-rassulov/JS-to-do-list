@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>to-do list</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./icon.jpg" type="image/jpg">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <h1>To-do list</h1>
+  </header>
+
+  <!-- Две колонки: слева форма создания задачи, справа блок Sort By и список задач -->
+  <div class="container">
+    <!-- Левая колонка: создание задачи -->
+    <div class="left-panel">
+      <section class="add-task">
+        <!-- Title, Priority, Date (в таблице сверху вниз) -->
+        <table class="task-input-table">
+          <tr>
+            <td>
+              <label for="taskTitle">Title</label>
+              <input 
+                type="text" 
+                id="taskTitle" 
+                placeholder="Short title"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="taskPriority">Priority</label>
+              <select id="taskPriority">
+                <option value="3">High</option>
+                <option value="2">Medium</option>
+                <option value="1">Low</option>
+                <option value="0" selected>None</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="taskDate">Date</label>
+              <input type="date" id="taskDate" />
+            </td>
+          </tr>
+        </table>
+
+        <!-- Description + кнопка Add Task сразу под ним -->
+        <div class="description-col">
+          <label for="taskDescription">Description</label>
+          <textarea 
+            id="taskDescription" 
+            placeholder="More details about the task..."
+          ></textarea>
+          <button id="addTaskBtn" class="btn-primary">Add Task</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Правая колонка: Sort By + Список задач -->
+    <div class="right-panel">
+      <section class="controls">
+        <label for="sortSelect">Sort by:</label>
+        <select id="sortSelect" class="sort-select">
+          <option value="priority">Priority</option>
+          <option value="date">Date</option>
+        </select>
+      </section>
+      <main id="taskList"></main>
+    </div>
+  </div>
+
+  <!-- Скрипт не меняем -->
+  <script src="./script.js"></script>
+</body>
+</html>
