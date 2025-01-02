@@ -1,0 +1,55 @@
+taskElement.querySelector('.editTask').addEventListener('click', () => {
+            // Создаем форму для редактирования
+            const editForm = document.createElement('div');
+            editForm.className = 'edit-form';
+            editForm.innerHTML = `
+                <input type="text" id="editTitle" value="${task.title}" placeholder="Task Title" required>
+                <textarea id="editDescription" placeholder="Task Description">${task.description || ''}</textarea>
+                <input type="date" id="editDate" value="${task.date}">
+                <input type="number" id="editPriority" value="${task.priority || ''}" placeholder="Priority (1-10)" min="1" max="10">
+                <label>
+                    Choose a color:
+                    <input type="color" id="editColor" value="${task.color || '#ffffff'}">
+                </label>
+                <label>
+                    Or upload an image:
+                    <input type="file" id="editImage" accept="image/*">
+                </label>
+                <button id="saveEdit">Save</button>
+                <button id="cancelEdit">Cancel</button>
+            `;
+        
+            // Заменяем задачу на форму редактирования
+            taskElement.replaceWith(editForm);
+        
+            // Обработчик сохранения изменений
+            editForm.querySelector('#saveEdit').addEventListener('click', () => {
+                const newTitle = editForm.querySelector('#editTitle').value.trim();
+                const newDescription = editForm.querySelector('#editDescription').value.trim();
+                const newDate = editForm.querySelector('#editDate').value;
+                const newPriority = editForm.querySelector('#editPriority').value;
+                const newColor = editForm.querySelector('#editColor').value;
+                const newImageFile = editForm.querySelector('#editImage').files[0];
+                const newImage = newImageFile ? URL.createObjectURL(newImageFile) : task.image;
+        
+                if (!newTitle) {
+                    alert('Task Title is required.');
+                    return;
+                }
+        
+                // Обновляем данные задачи
+                task.title = newTitle;
+                task.description = newDescription;
+                task.date = newDate;
+                task.priority = newPriority;
+                task.color = newColor;
+                task.image = newImage;
+        
+                saveAndRenderTasks(); // Сохраняем и рендерим обновленный список
+            });
+        
+            // Обработчик отмены редактирования
+            editForm.querySelector('#cancelEdit').addEventListener('click', () => {
+                saveAndRenderTasks(); // Возвращаем исходный вид
+            });
+        });
