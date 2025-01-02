@@ -4,7 +4,7 @@ A simple To-Do List application written in vanilla JavaScript, HTML, and CSS.
 It allows you to add tasks with **title**, **priority**, **date**, and a **description**.  
 You can also sort tasks by **priority** or **date**, edit tasks inline, and store them using `localStorage`.
 
-![todolist1screensh](https://github.com/user-attachments/assets/b303cd61-7e4e-4d9d-97c0-2915ddd87651)
+![todolist-project](https://github.com/user-attachments/assets/d96f3274-3dcd-4daa-8af4-ba884036c175)
 
 ## Features
 
